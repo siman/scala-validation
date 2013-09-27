@@ -1,23 +1,5 @@
-# Scala Validation
+package com.plameno.validation
 
-A small and simple validation framework for Scala.
-
-## Features
-
-* Validates a form of fields.
-* Each field can have as many as needed validators in a list.
-* Fail-fast per field: Once some of validators of a field failed, the process of form validation proceeds 
-  with a validation for a next field in a list, and so on.
-* Some basic validators are already implemented (RequiredStringValidator, MinLengthValidator, 
-  MaxLengthValidator, SimpleEmailValidator, etc).
-
-## Where I can use it?
-
-When dealing with UI forms like in web applications.  
-
-## Usage
-
-```scala
 object Usage extends App {
   
   import com.plameno.validation._
@@ -62,12 +44,3 @@ object Usage extends App {
 
   println(s"Validation errors:\n$prettyErrors")
 }
-```
-
-Output:
-```
-Validation errors:
-  login: Login is too long;
-  email: Field is required;
-  age: You should be over 18 years old;
-```
