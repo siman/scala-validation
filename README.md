@@ -6,7 +6,7 @@ A small and simple validation framework for Scala.
 
 * Validates a form of fields.
 * Each field can have as many as needed validators in a list.
-* Fail first: once some of validators of a field failed, the process of form validation proceeds 
+* Fail-fast per field: Once some of validators of a field failed, the process of form validation proceeds 
   with a validation for a next field in a list, and so on.
 * Some basic validators are already implemented (RequiredStringValidator, MinLengthValidator, 
   MaxLengthValidator, SimpleEmailValidator, etc).
