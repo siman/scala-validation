@@ -12,6 +12,7 @@ object BuildSettings {
     organization := "com.plameno",
     version := "0.1-SNAPSHOT",
     scalaVersion := "2.10.2",
+    crossScalaVersions := Seq("2.11.7"),
     resolvers += Resolver.sonatypeRepo("snapshots"),
     // credentials += Credentials(Path.userHome / ".ivy2" / ".credentials"),
     // publishTo <<= version((v: String) => Some( if (v.trim endsWith "SNAPSHOT") ossSnapshots else ossStaging)),
@@ -19,7 +20,7 @@ object BuildSettings {
     publishArtifact in Test := false,
     pomIncludeRepository := (_ => false),
     libraryDependencies ++= Seq(
-      "org.scalatest" %% "scalatest" % "1.9.2" % "test",
+      "org.scalatest" %% "scalatest" % "2.2.4" % "test",
       "com.novocode" % "junit-interface" % "0.8" % "test->default"
     ),
     scalacOptions ++= Seq(
