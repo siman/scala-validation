@@ -39,6 +39,10 @@ class ValidationSpec extends FlatSpec {
     assert(RegexValidator("beep", "x".r, Some(errorMsg)).validate == Some(errorMsg))
   }
 
+  it should "validate any supplied function in the InCaseValidator" in {
+    assert(InCaseValidator(2, (x : Int) => {x % 2 == 0}).isValid)
+  }
+
 }
 
 object ValidationSpecData {

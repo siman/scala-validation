@@ -43,4 +43,8 @@ case class PositiveIntValidator(i: Int, customError: Option[String] = None)
   def isValid = i > 0
 }
 
-// TODO: InCaseValidator - validates only if test expression is true.
+case class InCaseValidator[A](s: A, f: A => Boolean, customError: Option[String] = None) 
+  extends Validator(customError) {
+  override val defaultError = "Predicate failed, test expression was fault"
+  def isValid = f(s)
+}
