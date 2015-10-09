@@ -32,6 +32,13 @@ class ValidationSpec extends FlatSpec {
   it should "not validate an empty group of fields" in {
     assert(personForm.validateFields(Nil) === Map.empty)
   }
+
+  it should "validate with regular expressions" in {
+    assert(RegexValidator("hello world!", "^hello".r).isValid)
+    val errorMsg = "No x marks the spot!"
+    assert(RegexValidator("beep", "x".r, Some(errorMsg)).validate == Some(errorMsg))
+  }
+
 }
 
 object ValidationSpecData {

@@ -1,5 +1,7 @@
 package com.plameno.validation
 
+import scala.util.matching.Regex
+
 /**
  * @author Alex Siman [https://github.com/siman]
  * @date 2013-09-27
@@ -23,7 +25,11 @@ case class MaxLengthValidator(s: String, maxLen: Int, customError: Option[String
   def isValid = s.length <= maxLen
 }
 
-// TODO: RegexValidator with compiled pattern. And reuse it for email validation.
+case class RegexValidator(s: String, re: Regex, customError: Option[String] = None)
+  extends Validator(customError) {
+  override val defaultError = s"Regular expression ${re} could not be matched"
+  def isValid = !re.findAllIn(s).isEmpty
+}
 
 case class SimpleEmailValidator(e: String, customError: Option[String] = None) 
 	extends Validator(customError) {
