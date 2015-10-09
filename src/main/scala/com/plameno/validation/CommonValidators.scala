@@ -34,7 +34,7 @@ case class RegexValidator(s: String, re: Regex, customError: Option[String] = No
 case class SimpleEmailValidator(e: String, customError: Option[String] = None) 
 	extends Validator(customError) {
   override val defaultError = "Invalid email"
-  def isValid = """(\w+)@([\w\.]+)""".r.unapplySeq(e).isDefined
+  def isValid = RegexValidator(e,"""(\w+)@([\w\.]+)""".r, customError).isValid
 }
 
 case class PositiveIntValidator(i: Int, customError: Option[String] = None) 
