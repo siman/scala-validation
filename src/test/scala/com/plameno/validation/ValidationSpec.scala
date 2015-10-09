@@ -43,6 +43,10 @@ class ValidationSpec extends FlatSpec {
     assert(InCaseValidator(2, (x : Int) => {x % 2 == 0}).isValid)
   }
 
+  it should "be invalid if a supplied function fails in the InCaseValidator" in {
+    assert(InCaseValidator(3, (x : Int) => {x % 2 == 0}).isInvalid)
+  }
+
 }
 
 object ValidationSpecData {
