@@ -35,8 +35,8 @@ class ValidationSpec extends FlatSpec {
 
   it should "validate with regular expressions" in {
     assert(RegexValidator("hello world!", "^hello".r).isValid)
-    val errorMsg = "No x marks the spot!"
-    assert(RegexValidator("beep", "x".r, Some(errorMsg)).validate == Some(errorMsg))
+    val errorMsg = Some("No x marks the spot!")
+    assert(RegexValidator("beep", "x".r, errorMsg).validate == errorMsg)
   }
 
   it should "validate any supplied function in the InCaseValidator" in {
